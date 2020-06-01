@@ -80,13 +80,35 @@ class CategoriaController extends Controller
 
     //Guadar la categoria actualizada
     public function update(){
+        $reglas = [
+            "categoria" => ["required","alpha","min:4","unique:category,name"]
+        ];
+
+        $mensajes= [
+            "required" => "Campo obligatorio",
+            "alpha" => "solo letras",
+            "min"=> "Solo categrias :min caracteres",
+            "unique" => "categoria repetida"
+        ];
+    
+        $validador = Validator::make($_POST, $reglas,$mensajes);
+    
+        if ($validador->fails()) {
+           
+            return redirect('categorias/edit/'.$_POST["id"])->withErrors($validador)->withInput();
+        }else {
+
         //seleccina categoria editar
         $categoria = Categoria::find($_POST["id"]);
         //actualizamos artributos
         $categoria->name = $_POST["categoria"];
         //guardadr cambios
         $categoria->save();
-        echo"cambios guardado";
+        //echo"cambios guardado";
+        return redirect('categorias/edit/'.$_POST["id"])->with("exito","Categoria registrada");
+        //return view('categorias.edit')->with("categoria",$categoria);
+        }
+     
     }
 
 }

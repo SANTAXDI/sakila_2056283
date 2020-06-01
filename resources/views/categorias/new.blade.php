@@ -12,7 +12,7 @@
         <fieldset>
 
         <!--detectar si la variable "exito"tiene valor -->        
-​        @if (session("exito")):
+​        @if (session("exito"))
         <div class="alert-success">{{  session("exito")  }}</div>
         @endif
 
