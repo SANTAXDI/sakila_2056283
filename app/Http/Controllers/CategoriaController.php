@@ -104,9 +104,7 @@ class CategoriaController extends Controller
         $categoria->name = $_POST["categoria"];
         //guardadr cambios
         $categoria->save();
-        //echo"cambios guardado";
         return redirect('categorias/edit/'.$_POST["id"])->with("exito","Categoria registrada");
-        //return view('categorias.edit')->with("categoria",$categoria);
         }
      
     }
