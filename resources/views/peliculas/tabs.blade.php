@@ -19,12 +19,12 @@
  
 <div id="tabs">
   <ul>
-    @foreach ($categorias as $cat)
-    <li><a href="#{{ $cat->category_id }}">{{ $cat->name }}</a></li>
+    @foreach ($categorias as $categoria)
+    <li><a href="#{{ $categoria->category_id }}">{{ $categoria->name }}</a></li>
     @endforeach
   </ul>
-  @foreach ($categorias as $catego)
-  <div id="{{ $catego->category_id }}">
+  @foreach ($categorias as $categoria)
+  <div id="{{ $categoria->category_id }}">
         <p>
             <!-- hacer una tabla de peliculas de la categoria -->
             <table class="table table-condensed">
@@ -35,10 +35,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($catego->peliculas()->get() as $peli)
+                    @foreach ($categoria->peliculas()->get() as $pelicula)
                         <tr>
-                            <td>{{$peli->title}}</td>
-                            <td>{{$peli->rating }}</td>
+                            <td>{{$pelicula->title}}</td>
+                            <td>{{$pelicula->rating }}</td>
                         </tr>
                      @endforeach
                 </tbody>

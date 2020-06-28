@@ -76,10 +76,10 @@ Route::get('acordeon', function () {
     //meter las categorias a la vista 
     return view('peliculas.acordeon')->with("categorias",$categorias);
 });
-Route::get('tabs', function () {
+Route::get('tabsevidecia', function () {
     //seleccionar todas las categorias
     $categorias = App\Categoria::all();
-    //meter las categorias a la vista 
+ 
     return view('peliculas.tabs')->with("categorias",$categorias);
 });
 //Rutas de cliente
